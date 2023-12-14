@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+section {
+    margin: 2em;
+    background: white;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #333;
+}
+
+pre {
+    background-color: #282c34; /* Dark background for the code block */
+    color: #abb2bf; /* Light font color for better contrast */
+    padding: 16px;
+    overflow-x: auto;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    line-height: 1.2;
+}
+
+/* Ensures that the code tag does not add extra spaces */
+code.language-python {
+    white-space: pre;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#endpoints > div > pre {
+    display: none; /* Initially hide the content */
+    margin-top: 15px; /* Space between header and content */
+}
+
+#code-sample-header {
+    cursor: pointer; /* Indicate that the header is clickable */
+    color: #0066cc; /* Optional: style the headers */
+    text-decoration: underline;
+}
+
+.api-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.api-table, .api-table th, .api-table td {
+    border: 1px solid #ddd;
+}
+
+.api-table th, .api-table td {
+    padding: 8px;
+    text-align: left;
+}
+
+.api-table th {
+    background-color: #f4f4f4;
+    color: #333;
+}

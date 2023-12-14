@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DotPics API Documentation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Highlight.js Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <!-- Highlight.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Ethereum Data API Documentation</h1>
+    </header>
+    <nav>
+        <!-- Navigation Bar -->
+    </nav>
+    <section id="authentication">
+        <h2>API</h2>
+        <p>The API can be reached at the URL <a href="https://api.dotpics.info">https://api.dotpics.info</a>.</p>
+    </section>
+    <section id="authentication">
+        <h2>Authentication</h2>
+        <p>To gain access to this API, please contact <a href="https://twitter.com/nero_eth">me</a> at <a href="mailto:toni@ethereum.org">toni[at]ethereum.org</a>.</p>
+    </section>
+    <section id="rate_limiting">
+        <h2>Rate Limiting</h2>
+        <p>Explanation of rate limits (5 request per minute) and handling of limit excess.</p>
+    </section>
+    <section id="endpoints">
+        <h2>Endpoints</h2>
+
+        <!-- Beacon Chain Endpoint -->
+        <div id="beaconchain">
+    <h3>/beaconchain/{day}</h3>
+    <p>Retrieve beacon chain data for a specified day. Parameters: day (int)</p>
+    <table class="api-table">
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>date</td>
+                <td>TIMESTAMP</td>
+                <td>Timestamp (UTC) of the beacon chain block.</td>
+            </tr>
+            <tr>
+                <td>slot</td>
+                <td>INTEGER</td>
+                <td>Slot number in the beacon chain.</td>
+            </tr>
+            <tr>
+                <td>block_number</td>
+                <td>INTEGER</td>
+                <td>Block number within the execution layer.</td>
+            </tr>
+            <tr>
+                <td>block_hash</td>
+                <td>STRING</td>
+                <td>Unique hash of the block.</td>
+            </tr>
+            <tr>
+                <td>relay</td>
+                <td>STRING</td>
+                <td>Identifier of the MEV-Boost relay through which the block was propagated.</td>
+            </tr>
+            <tr>
+                <td>builder_pubkey</td>
+                <td>STRING</td>
+                <td>Public key of the MEV-Boost block builder.</td>
+            </tr>
+            <tr>
+                <td>builder</td>
+                <td>STRING</td>
+                <td>Name of the MEV-Boost block builder.</td>
+            </tr>
+            <tr>
+                <td>proposer_pubkey</td>
+                <td>STRING</td>
+                <td>Public key of the block proposer (validator).</td>
+            </tr>
+            <tr>
+                <td>validator</td>
+                <td>STRING</td>
+                <td>Name of the validator (Lido, Rocketpool, etc.).</td>
+            </tr>
+            <tr>
+                <td>mevboost_payment_gwei</td>
+                <td>FLOAT</td>
+                <td>MEV-Boost payment amount in Gwei.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="code-sample-header">Show code sample</p>
+    <pre><code class="language-python">import json
+import requests
+from requests.auth import HTTPBasicAuth
+
+# URL of your deployed application
+url = "https://api.dotpics.info/beaconchain/20231115" # 15. Nov. 2023
+
+# Basic Authentication credentials
+auth = HTTPBasicAuth('username', 'password')
+
+# Sending a GET request
+response = requests.get(url, auth=auth)
+
+# Add assertions based on your expected response
+if response.status_code == 200:
+    print("Success! Response Data: ")
+else:
+    print("Failed with status code: ", response.status_code)
+
+print(json.loads(response.content))</code></pre>
+</div>
+        <!-- ValidatorEndpoint -->
+    <div id="validator">
+    <h3>/validator/{index}</h3>
+    <p>Get data for a specific validator by index. Parameters: index (int)</p>
+    <table class="api-table">
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>pubkey</td>
+                <td>STRING</td>
+                <td>Public key of the validator.</td>
+            </tr>
+            <tr>
+                <td>deposit_address</td>
+                <td>STRING</td>
+                <td>Ethereum address used for the validator's initial deposit.</td>
+            </tr>
+            <tr>
+                <td>label</td>
+                <td>STRING</td>
+                <td>Custom label or name for the validator.</td>
+            </tr>
+            <tr>
+                <td>validator_id</td>
+                <td>INTEGER</td>
+                <td>Numerical identifier for the validator.</td>
+            </tr>
+            <tr>
+                <td>withdrawn</td>
+                <td>INTEGER</td>
+                <td>Indicator of the withdrawal status of the validator's stake, usually represented as a boolean value (0 or 1).</td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="code-sample-header">Show code sample</p>
+    <pre><code class="language-python">import json
+import requests
+from requests.auth import HTTPBasicAuth
+
+# URL of your deployed application
+url = "https://api.dotpics.info/validator/1234" # Validator with ID 1234
+
+# Basic Authentication credentials
+auth = HTTPBasicAuth('username', 'password')
+
+# Sending a GET request
+response = requests.get(url, auth=auth)
+
+# Add assertions based on your expected response
+if response.status_code == 200:
+    print("Success! Response Data: ")
+else:
+    print("Failed with status code: ", response.status_code)
+
+print(json.loads(response.content))</code></pre>
+    </div>
+    </section>
+    <footer>
+        <p>© 2023 Toni Wahrstätter</p>
+    </footer>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
