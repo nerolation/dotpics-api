@@ -31,17 +31,17 @@
     <nav>
         <!-- Navigation Bar -->
     </nav>
-    <section id="authentication">
+    <section id="api-endpoint">
         <h2>API</h2>
         <p>The API can be reached at the URL <a href="https://api.dotpics.info">https://api.dotpics.info</a>.</p>
     </section>
     <section id="authentication">
         <h2>Authentication</h2>
-        <p>To gain access to this API, please contact <a href="https://twitter.com/nero_eth">me</a> at <a href="mailto:toni@ethereum.org">toni[at]ethereum.org</a>.</p>
+        <p>To gain access to this API, please contact <a href="https://twitter.com/nero_eth">me</a> at <a href="mailto:toni@ethereum.org">toni[at]ethereum.org</a> or on Telegram at <a href="https://telegram.me/nero_eth">nero_eth</a>.</p>
     </section>
     <section id="rate_limiting">
         <h2>Rate Limiting</h2>
-        <p>Explanation of rate limits (5 request per minute) and handling of limit excess.</p>
+        <p>For now, the API is limited to 5 request per minute.</p>
     </section>
     <section id="endpoints">
         <h2>Endpoints</h2>
@@ -50,7 +50,8 @@
         <div id="beaconchain">
     <h3>/beaconchain/{day}</h3>
     <p>Retrieve beacon chain data for a specified day. Parameters: day (int)</p>
-    <table class="api-table">
+    <p id="table-schema-header">Show table schema</p>
+    <table class="api-table" style="display:none;">
         <thead>
             <tr>
                 <th>Field Name</th>
@@ -139,7 +140,8 @@ print(json.loads(response.content))</code></pre>
     <div id="validator">
     <h3>/validator/{index}</h3>
     <p>Get data for a specific validator by index. Parameters: index (int)</p>
-    <table class="api-table">
+    <p id="table-schema-header">Show table schema</p>
+    <table class="api-table" style="display:none;">
         <thead>
             <tr>
                 <th>Field Name</th>
@@ -201,6 +203,6 @@ print(json.loads(response.content))</code></pre>
     <footer>
         <p>© 2023 Toni Wahrstätter</p>
     </footer>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="scripts/script.js"></script>
 </body>
 </html>

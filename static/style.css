@@ -64,6 +64,12 @@ a:hover {
     text-decoration: underline;
 }
 
+#table-schema-header {
+    cursor: pointer; /* Indicate that the header is clickable */
+    color: #0066cc; /* Optional: style the headers */
+    text-decoration: underline;
+}
+
 .api-table {
     width: 100%;
     border-collapse: collapse;
